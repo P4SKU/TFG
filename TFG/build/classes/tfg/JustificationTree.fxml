@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="775.0" prefWidth="1366.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tfg.JustificationTreeController">
+    <stylesheets>
+        <URL value="@tfg_fxml.css" />
+    </stylesheets>
+   <children>
+      <Label fx:id="cargarBH" layoutX="298.0" layoutY="80.0" prefHeight="28.0" prefWidth="129.0" text="Load program">
+         <font>
+            <Font name="Bodoni MT Condensed" size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="justificationTree" layoutX="42.0" layoutY="211.0" text="Justification Tree">
+         <font>
+            <Font name="Cambria Bold Italic" size="24.0" />
+         </font></Label>
+      <Button fx:id="buttonLoadBH" alignment="TOP_LEFT" focusTraversable="false" layoutX="280.0" layoutY="117.0" mnemonicParsing="false" onAction="#loadFactsDB" prefHeight="40.0" prefWidth="152.0" styleClass="mainButton" text="Load">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <stylesheets>
+            <URL value="@tfg_fxml.css" />
+            <URL value="@tfg_fxml.css" />
+         </stylesheets></Button>
+      <ImageView fx:id="imggg" fitHeight="282.0" fitWidth="387.0" layoutX="990.0" layoutY="519.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/giphy.gif" />
+         </image></ImageView>
+      <Button fx:id="buttonExecute" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="491.0" layoutY="117.0" mnemonicParsing="false" onAction="#fireQuery" prefHeight="40.0" prefWidth="152.0" styleClass="mainButton" stylesheets="@tfg_fxml.css" text="Execute" textAlignment="RIGHT" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TextField fx:id="queryPrompt" layoutX="659.0" layoutY="123.0" prefHeight="28.0" prefWidth="179.0" promptText="ancestor(X,fanny)." text="ancestor(X,fanny).">
+         <padding>
+            <Insets left="22.0" />
+         </padding></TextField>
+      <TextFlow fx:id="datosCuriosos" layoutX="1016.0" layoutY="103.0" prefHeight="391.0" prefWidth="309.0" />
+      <Label fx:id="sabiasque" layoutX="1016.0" layoutY="64.0" text="Did you know?">
+         <font>
+            <Font name="Bell MT" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="cargueParaEmpezar" contentDisplay="TOP" layoutX="314.0" prefHeight="63.0" prefWidth="618.0" text="Load a program and execute a Query to begin..." textAlignment="CENTER" underline="true" wrapText="true">
+         <font>
+            <Font name="Verdana Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="cargarBH1" layoutX="518.0" layoutY="80.0" text="Write query">
+         <font>
+            <Font name="Bodoni MT Condensed" size="28.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="radioAtom" layoutX="462.0" layoutY="280.0" mnemonicParsing="false" onAction="#showAtom" selected="true" text="Atoms">
+         <toggleGroup>
+            <ToggleGroup fx:id="grupo1" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="radioPhrase" layoutX="462.0" layoutY="313.0" mnemonicParsing="false" onAction="#showPhrase" text="Textual Representation" toggleGroup="$grupo1" />
+      <Label layoutX="356.0" layoutY="276.0" text="Showing...">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonHide" layoutX="435.0" layoutY="739.0" mnemonicParsing="false" onAction="#hideElements" prefHeight="33.0" prefWidth="118.0" styleClass="darkblue" stylesheets="@tfg_fxml.css" text="Hide nodes" />
+      <RadioButton fx:id="radioContract" layoutX="760.0" layoutY="284.0" mnemonicParsing="false" onAction="#nodesContract" text="Contract">
+         <toggleGroup>
+            <ToggleGroup fx:id="grupo2" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="radioDeploy" layoutX="760.0" layoutY="314.0" mnemonicParsing="false" onAction="#nodesDeploy" text="Deploy" toggleGroup="$grupo2" />
+      <TabPane fx:id="tabPane" cacheHint="SPEED" cacheShape="false" depthTest="DISABLE" focusTraversable="false" layoutX="33.0" layoutY="373.0" onMouseClicked="#getTabPage" pickOnBounds="false" prefHeight="347.0" prefWidth="921.0" style="-fx-border-color: black;" tabClosingPolicy="UNAVAILABLE" />
+      <Slider fx:id="scrollZoom" blockIncrement="1.0" layoutX="129.0" layoutY="284.0" majorTickUnit="12.0" max="36.0" min="12.0" minorTickCount="1" nodeOrientation="LEFT_TO_RIGHT" prefHeight="77.0" prefWidth="143.0" showTickLabels="true" showTickMarks="true" value="1.0" />
+      <Button layoutX="843.0" layoutY="280.0" mnemonicParsing="false" onAction="#minus1Level" prefHeight="35.0" prefWidth="93.0" styleClass="darkblue" stylesheets="@tfg_fxml.css" text="-1 Level" />
+      <Label layoutX="52.0" layoutY="277.0" prefHeight="24.0" prefWidth="77.0" text="Zoom...">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="677.0" layoutY="277.0" text="Nodes...">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="45.0" fitWidth="51.0" layoutX="52.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/size.png" />
+         </image>
+      </ImageView>
+      <Line endX="919.0" layoutX="33.0" layoutY="253.0" startX="209.0" strokeWidth="4.0" />
+      <Line endX="-10.0" endY="451.0" layoutX="43.0" layoutY="263.0" startX="-11.0" startY="-59.0" strokeWidth="4.0" />
+      <Line endX="199.0" endY="-61.0" layoutX="43.0" layoutY="263.0" startX="-9.0" startY="-61.0" strokeWidth="4.0" />
+      <Line endX="-17.1715087890625" endY="400.4141845703125" layoutX="972.0" layoutY="317.0" startX="-18.0" startY="-62.0" strokeWidth="4.0" />
+      <Line endX="-10.0" endY="-18.0" layoutX="252.0" layoutY="269.0" startX="-10.0" startY="-65.0" strokeWidth="4.0" />
+      <Line endX="-20.5" endY="443.82843017578125" layoutX="53.0" layoutY="273.0" startX="899.0" startY="445.0" strokeWidth="4.0" />
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="361.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/type.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="59.0" layoutX="678.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/node.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="openHiddenNodesImg" fitHeight="45.0" fitWidth="67.0" layoutX="898.0" layoutY="200.0" onMouseClicked="#openHiddenNodes" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/prologIcon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Text layoutX="667.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?-">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button layoutX="843.0" layoutY="319.0" mnemonicParsing="false" onAction="#add1level" prefHeight="35.0" prefWidth="93.0" styleClass="darkblue" stylesheets="@tfg_fxml.css" text="+1 Level" />
+      <ImageView fitHeight="35.0" fitWidth="59.0" layoutX="588.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/process.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="33.0" fitWidth="45.0" layoutX="367.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/open.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

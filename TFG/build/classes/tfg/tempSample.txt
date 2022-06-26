@@ -1,0 +1,110 @@
+
+arrayString = [
+					[
+					call(0,ancestor(anna,fanny))
+					   call(1,parent(anna,fanny))
+						  call(2,mother(anna,fanny))
+					]
+					[
+					call(0,ancestor(daniel,fanny))
+					   call(1,parent(daniel,fanny))
+						  call(2,mother(daniel,fanny))
+					]
+					[
+					call(0,ancestor(tim,fanny))
+					   call(1,parent(tim,anna))
+						  call(2,mother(tim,anna))
+					   call(1,ancestor(anna,fanny))
+						  call(2,parent(anna,fanny))
+							 call(3,mother(anna,fanny))
+					]
+					[
+					call(0,ancestor(celine,fanny))
+					   call(1,parent(celine,daniel))
+						  call(2,father(celine,daniel))
+					   call(1,ancestor(daniel,fanny))
+						  call(2,parent(daniel,fanny))
+							 call(3,mother(daniel,fanny))
+					]
+				]
+
+
+arrayStringClean = arrayString.trim().replace("[[", "]]", "call", " ");
+arrayStringClean2 = arrayString.trim().replace("][", ";");
+arrayStringClean2 = 	"		
+					(0,ancestor(anna,fanny))
+					   (1,parent(anna,fanny))
+						  (2,mother(anna,fanny))
+					;				
+					(0,ancestor(daniel,fanny))
+					   (1,parent(daniel,fanny))
+						  (2,mother(daniel,fanny))
+					;					
+					(0,ancestor(tim,fanny))
+					   (1,parent(tim,anna))
+						  (2,mother(tim,anna))
+					   (1,ancestor(anna,fanny))
+						  (2,parent(anna,fanny))
+							 (3,mother(anna,fanny))
+					;									
+					(0,ancestor(celine,fanny))
+					   (1,parent(celine,daniel))
+						  (2,father(celine,daniel))
+					   (1,ancestor(daniel,fanny))
+						  (2,parent(daniel,fanny))
+							 (3,mother(daniel,fanny))	
+				"
+				
+arraySolutions = arraStringClean.split(";");
+
+arraySolutions = 	[0]	->
+					(0,ancestor(anna,fanny))
+					   (1,parent(anna,fanny))
+						  (2,mother(anna,fanny))
+					[1]	->	
+					(0,ancestor(daniel,fanny))
+					   (1,parent(daniel,fanny))
+						  (2,mother(daniel,fanny))
+					[2]	->
+					(0,ancestor(tim,fanny))
+					   (1,parent(tim,anna))
+						  (2,mother(tim,anna))
+					   (1,ancestor(anna,fanny))
+						  (2,parent(anna,fanny))
+							 (3,mother(anna,fanny))
+					[3]	->
+					(0,ancestor(celine,fanny))
+					   (1,parent(celine,daniel))
+						  (2,father(celine,daniel))
+					   (1,ancestor(daniel,fanny))
+						  (2,parent(daniel,fanny))
+							 (3,mother(daniel,fanny))
+							 
+foreach(arraySolutions)-> removeFirst("("), removeLAST(")"), splittedSol = (")(", arraySolution([i])
+					[3]	->
+						[0] ->
+							0,ancestor(celine,fanny)
+							***
+						[1] ->
+							1,parent(celine,daniel)
+						[2] -> 
+							2,father(celine,daniel)
+						[3] ->	  
+							 1,ancestor(daniel,fanny))						   
+						[4] ->
+							2,parent(daniel,fanny)
+						[5] ->	  
+							3,mother(daniel,fanny)
+***splittedArrayByLevels = splitStringByFirstComma;
+if(splittedArrayByLevels[0]) == 0 -> id=TOP; == 1->LEVEL1; ==2; LEVEL2
+
+					[3]	->
+				{splittedArrayByLevels[1]}	ancestor(celine,fanny) -> TOP {splittedArray[0]}
+											   parent(celine,daniel) -> LEVEL1
+												  father(celine,daniel) ->LEVEL2
+											   (ancestor(daniel,fanny) ->LEVEL1
+												  parent(daniel,fanny) ->LEVEL2
+													 mother(daniel,fanny) ->LEVEL3
+													 
+pintar por pantalla , pera encontrar en que nodo padre es recorrer el array en forma inversa desde mi posicion
+y el primero q tenga idMio-1 es mi padre.

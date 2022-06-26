@@ -1,0 +1,1 @@
+[[call(0,ancestor(celine,daniel),"celine is the ancestor of daniel"),call(1,parent(celine,daniel),"celine is the parent of daniel"),call(2,father(celine,daniel),"celine is the father of daniel")]]
